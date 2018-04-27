@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head th:insert="index :: head">
+
+</head>
+<body>
+
+<!--<nav th:insert="index :: navigation"></nav>-->
+
+<div class="container">
+    <div class="section">
+        <h1>List People</h1>
+    </div>
+</div>
+
+<h2>People</h2>
+<a href="/addperson" class="btn btn-primary">Add A Person</a>
+<a href="#" class="btn btn-warning">Add A Resume</a>
+
+<div th:each="eachPerson:${allpeople}">
+    <p th:text="${eachPerson.firstName}"></p>
+    <p th:text="${eachPerson.lastName}"></p>
+    <a href="/createresume">Add Resume</a>
+</div>
+
+<span th:insert="index :: js"></span>
+</body>
+</html>

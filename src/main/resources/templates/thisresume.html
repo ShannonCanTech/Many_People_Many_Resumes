@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head th:insert="index :: head">
+
+</head>
+<body>
+
+<!--<div th:each="eachJobTitle:${theResume.jobTitle}"></div>-->
+<p th:text="${theResume.jobTitle}"></p>
+
+<span th:insert="index :: js"></span>
+</body>
+</html>

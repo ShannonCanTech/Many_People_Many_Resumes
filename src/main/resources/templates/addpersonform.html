@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head th:insert="index :: head">
+
+</head>
+
+<body>
+
+<!--<nav th:insert="index :: navigation"></nav>-->
+
+<header>
+    <div class="container">
+        <div class="section">
+            <h1>Testing!!!!!</h1>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+        <form action="/saveperson" th:object="${thePerson}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="firstName">Insert first name: </label>    <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name" class="form-control">
+                </div>
+                <div class="form-row">
+                    <label for="lastName">Insert last name: </label>    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="emailAddress">Insert email address: </label>    <input type="text" th:field="*{emailAddress}" id="emailAddress" placeholder="emailname@domain.com" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="phoneNumber">Insert phone number: </label>    <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="000-000-0000" class="form-control">
+                </div>
+            </div>
+            <button type="submit">Save</button>
+
+        </form>
+</div>
+
+<span th:insert="index :: js"></span>
+</body>
+
+</html>
