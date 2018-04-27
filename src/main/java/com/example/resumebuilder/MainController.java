@@ -38,6 +38,7 @@ public class MainController {
     @RequestMapping("/listpeople")
     public String listPeople(Model model){
         model.addAttribute("allpeople", personRepo.findAll());
+        model.addAttribute("allresumes", resumeRepo.findAll()); //added at 4:08pm
         return "listpeople";
     }
 
@@ -82,7 +83,14 @@ public class MainController {
     @RequestMapping("/createresume")
     public String  createResume(Model model){
         model.addAttribute("theResume", new Resume());
+        model.addAttribute("allpeople", personRepo.findAll()); //added since you are adding/syncing to person. Possibly include a dropdown menu for all of the persons
         return "createresumeform";
+    }
+
+    @RequestMapping("/addresumeform")
+    public String  addResumeForm(Model model){
+        model.addAttribute("theResume", new Resume());//don't know the purpose of
+        return "addresume";
     }
 
     //Maybe insert a list of resume for the person and give them the option to choose a resume
@@ -92,22 +100,30 @@ public class MainController {
         return "listresume";
     }
 
+    //Show Reusme
     @RequestMapping("/resume/{id}")
-    public String thisResume(@PathVariable("id") long id, Model model){
-        model.addAttribute("thePerson", personRepo.findById(id).get());
+    public String individualResume(@PathVariable("id") long id, Model model){
+        model.addAttribute("theResume", resumeRepo.findById(id).get());
+        return "thisresume";
+    }
+
+    @RequestMapping("/thisresume")
+    public String thisResume(Model model){
+//        model.addAttribute("allresumes", resumeRepo.findAll()); //removed to test if I should use findAll for Person(s) instead
+        model.addAttribute("allpeople", personRepo.findAll());
         return "thisresume";
     }
 
     @PostMapping("/saveresume")
     public String saveResume(@ModelAttribute("theResume") Resume resume, BindingResult result){
         resumeRepo.save(resume);
-        return "redirect:thisresume";
+        return "redirect:listpeople";
     }
 
     //Remove and show resumes under personInfo() instead
     @RequestMapping("/resumes")
     public String showResumes(Model model){
-        model.addAttribute("resumelist", resumeRepo.findAll());
+        model.addAttribute("allresumes", resumeRepo.findAll());//removed resumelist because I don't know why it's there
         //This should direct to personinfo.
         return "showresumeinfo";
     }

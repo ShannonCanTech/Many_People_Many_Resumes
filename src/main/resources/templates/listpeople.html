@@ -7,21 +7,36 @@
 <body>
 
 <!--<nav th:insert="index :: navigation"></nav>-->
-
-<div class="container">
-    <div class="section">
-        <h1>List People</h1>
+<header>
+    <div class="container">
+        <div class="row">
+            <h1>List of People</h1>
+            <p class="lead">This page lists people currently in the database and gives you the option add a resume to the selected user.</p>
+        </div>
     </div>
-</div>
+</header>
 
 <h2>People</h2>
 <a href="/addperson" class="btn btn-primary">Add A Person</a>
 <a href="#" class="btn btn-warning">Add A Resume</a>
 
-<div th:each="eachPerson:${allpeople}">
-    <p th:text="${eachPerson.firstName}"></p>
-    <p th:text="${eachPerson.lastName}"></p>
-    <a href="/createresume">Add Resume</a>
+<div class="container">
+    <div class="row">
+        <div th:each="eachPerson:${allpeople}">
+            <p th:text="${eachPerson.firstName}"></p>
+            <p th:text="${eachPerson.lastName}"></p>
+            <a href="/createresume">Add Resume</a>
+            <a href="/editPerson">Edit Person</a>
+
+            <!--List of resumes under each person-->
+            <div th:each="eachResume:${eachPerson.myResumes}">
+                <p clas="lead">Resumes</p>
+                    <ul>
+                        <li><a th:href="@{/resume/{id}(id=${eachResume.id})}">Resume Name:<p th:text="${eachResume.resumeName}"></p></a></li> <!--This link will take user to this specific resume.-->
+                    </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <span th:insert="index :: js"></span>

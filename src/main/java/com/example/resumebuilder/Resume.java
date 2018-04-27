@@ -1,6 +1,7 @@
 package com.example.resumebuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +10,10 @@ public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    //Added Resume Name Request for user
+    @NotEmpty
+    private String resumeName;
 
     //Work Experience
     private String jobTitle;
@@ -26,6 +31,11 @@ public class Resume {
     private Set<Person> personResume;
 
     public Resume() {
+        personResume = new HashSet<>();
+    }
+
+    public Resume(@NotEmpty String resumeName) {
+        this.resumeName = resumeName;
         personResume = new HashSet<>();
     }
 
@@ -83,6 +93,14 @@ public class Resume {
 
     public void setProficiency(String proficiency) {
         this.proficiency = proficiency;
+    }
+
+    public String getResumeName() {
+        return resumeName;
+    }
+
+    public void setResumeName(String resumeName) {
+        this.resumeName = resumeName;
     }
 
     public Set<Person> getPersonResume() {
