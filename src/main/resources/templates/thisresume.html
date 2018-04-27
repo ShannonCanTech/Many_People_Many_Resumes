@@ -6,11 +6,12 @@
 </head>
 <body>
 
-<!--<div th:each="eachJobTitle:${theResume.jobTitle}"></div>-->
-<p th:text="${thePerson.firstName}"></p>
-<p th:text="${thePerson.lastName}"></p>
-<p th:text="${thePerson.emailAddress}"></p>
-<p th:text="${thePerson.phoneNumber}"></p>
+<div th:each="eachPerson:${theResume.personResume}">
+    <p th:text="${eachPerson.firstName}"></p>
+</div>
+<!--<p th:text="${theResume.lastName}"></p>
+<p th:text="${theResume.emailAddress}"></p>
+<p th:text="${theResume.phoneNumber}"></p>-->
 
 
 <!--<div th:text="thePerson.myResumes}">
