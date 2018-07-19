@@ -2,7 +2,9 @@ package com.example.resumebuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,17 +17,27 @@ public class Resume {
     @NotEmpty
     private String resumeName;
 
+    //Optional
+    private String objective;
+
     //Work Experience
     private String jobTitle;
     private String organization;
+    @OneToMany(mappedBy = "user_experience")
+    private List<Experience> experiences = new ArrayList<Experience>();
 
     //EducationalAchievements
     private String degree;
     private String institution;
+    @OneToMany(mappedBy = "user_education")
+    private List<Education> educations = new ArrayList<Education>();
 
     //Skills
     private String skills;
     private String proficiency;
+    @OneToMany(mappedBy = "user_skills")
+    private List<Skill> skill = new ArrayList<Skill>();
+
 
     @ManyToMany()
     private Set<Person> personResume;

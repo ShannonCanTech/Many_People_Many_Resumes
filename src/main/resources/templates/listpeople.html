@@ -16,21 +16,22 @@
     </div>
 </header>
 
-<h2>People</h2>
-<a href="/addperson" class="btn btn-primary">Add A Person</a>
-<a href="#" class="btn btn-warning">Add A Resume</a>
+<div class="container">
+    <h2>People</h2>
+    <a href="/addperson" class="btn btn-primary">Add A Person</a>
+</div>
 
 <div class="container">
     <div class="row">
         <div th:each="eachPerson:${allpeople}">
             <p th:text="${eachPerson.firstName}"></p>
             <p th:text="${eachPerson.lastName}"></p>
-            <a href="/createresume">Add Resume</a>
-            <a href="/editPerson">Edit Person</a>
+            <a href="/createresume" class="btn btn-primary">Add Resume</a>
+            <a href="/editPerson" class="btn btn-warning">Edit Person</a>
 
             <!--List of resumes under each person-->
             <div th:each="eachResume:${eachPerson.myResumes}">
-                <p clas="lead">Resumes</p>
+                <p class="lead">Resumes</p>
                     <ul>
                         <li><a th:href="@{/resume/{id}(id=${eachResume.id})}">Resume Name:<p th:text="${eachResume.resumeName}"></p></a></li> <!--This link will take user to this specific resume.-->
                     </ul>
