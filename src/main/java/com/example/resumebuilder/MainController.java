@@ -1,7 +1,6 @@
 package com.example.resumebuilder;
 
-import com.example.resumebuilder.repository.PersonRepository;
-import com.example.resumebuilder.repository.ResumeRepository;
+import com.example.resumebuilder.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +21,18 @@ public class MainController {
 
     @Autowired
     ResumeRepository resumeRepo;
+
+    @Autowired
+    EducationRepository educationRepo;
+
+    @Autowired
+    ExperienceRepository experienceRepo;
+
+    @Autowired
+    ReferenceRepository referenceRepo;
+
+    @Autowired
+    SkillRepository skillRepo;
 
     @RequestMapping("/")
     public String showIndex(){
@@ -80,9 +91,13 @@ public class MainController {
         return "createresumeform";
     }*/
 
-    @RequestMapping("/createresume")
+    @RequestMapping("/createresumeform")
     public String  createResume(Model model){
         model.addAttribute("theResume", new Resume());
+        model.addAttribute("thisExperience", new Experience());
+        model.addAttribute("thisEducation", new Education());
+        model.addAttribute("thisReference", new Reference());
+        model.addAttribute("thisSkill", new Skill());
         model.addAttribute("allpeople", personRepo.findAll()); //added since you are adding/syncing to person. Possibly include a dropdown menu for all of the persons
         return "createresumeform";
     }
@@ -100,7 +115,7 @@ public class MainController {
         return "listresume";
     }
 
-    //Show Reusme
+    //Show Resume
     @RequestMapping("/resume/{id}")
     public String individualResume(@PathVariable("id") long id, Model model){
         model.addAttribute("theResume", resumeRepo.findById(id).get());

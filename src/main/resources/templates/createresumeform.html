@@ -27,122 +27,64 @@
         </div>
 
         <!--WORK EXPERIENCE SECTION-->
-        <h2>Work Experience</h2>
-        <div class="form-group row">
-                <label for="jobTitle1" class="col-sm-2 col-form-label">Insert job title: </label>
+            <h2>Work Experience</h2>
+            <div class="form-group row">
+                    <label for="jobTitle1" class="col-sm-2 col-form-label">Insert job title: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{experiences[0].jobTitle}" id="jobTitle1" placeholder="Job Title">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="organization1" class="col-sm-2 col-form-label">Insert organization: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{jobTitle}" id="jobTitle1" placeholder="Job Title">
+                    <input type="text" class="form-control" th:field="*{experiences[0].organization}" id="organization1" placeholder="Organization">
                 </div>
-        </div>
-        <div class="form-group row">
-            <label for="organization1" class="col-sm-2 col-form-label">Insert organization: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{organization}" id="organization" placeholder="Organization">
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="jobTitle2" class="col-sm-2 col-form-label">Insert job title: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{jobTitle}" id="jobTitle2" placeholder="Job Title">
+            <div class="form-group row">
+                <label for="start_date_1" class="col-2 col-form-label">Start Date</label>
+                <div class="col-10">
+                    <input class="form-control" th:field="*{experiences[0].startDate}" type="month" value="2011-08" id="start_date_1">
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="organization2" class="col-sm-2 col-form-label">Insert organization: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{organization}" id="organization2" placeholder="Organization">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="jobTitle3" class="col-sm-2 col-form-label">Insert job title: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{jobTitle}" id="jobTitle3" placeholder="Job Title">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="organization3" class="col-sm-2 col-form-label">Insert organization: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{organization}" id="organization3" placeholder="Organization">
-            </div>
-        </div>
-
+            <div class="form-group row">
+                    <label for="start_date_1" class="col-2 col-form-label">End Date</label>
+                    <div class="col-10">
+                        <input class="form-control" th:field="*{experiences[0].startDate}" type="month" value="2011-08" id="start_date_1">
+                    </div>
+                </div>
+        <!--/END OF WORK EXPERIENCE-->
 
         <!--EDUCATIONAL ACHIEVEMENTS SECTION-->
         <h2>Educational Achievements</h2>
-        <div class="form-group row">
-            <label for="degree1" class="col-sm-2 col-form-label">Insert degree: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{degree}" id="degree1" placeholder="Degree">
+            <div class="form-group row">
+                <label for="degree1" class="col-sm-2 col-form-label">Insert degree: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{educations[0].degree}" id="degree1" placeholder="Degree">
+                </div>
             </div>
-        </div>
             <div class="form-group row">
                 <label for="institution" class="col-sm-2 col-form-label">Insert institution: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{institution}" id="institution" placeholder="institution">
+                    <input type="text" class="form-control" th:field="*{educations[0].institution}" id="institution" placeholder="institution">
                 </div>
             </div>
-        <div class="form-group row">
-            <label for="jobTitle2" class="col-sm-2 col-form-label">Insert degree: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{degree}" id="degree2" placeholder="Degree">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="institution2" class="col-sm-2 col-form-label">Insert institution: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{institution}" id="institution2" placeholder="institution">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="jobTitle3" class="col-sm-2 col-form-label">Insert degree: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{degree}" id="degree3" placeholder="Degree">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="institution3" class="col-sm-2 col-form-label">Insert institution: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{institution}" id="institution3" placeholder="institution">
-            </div>
-        </div>
+        <!--/END OF EDUCATIONAL ACHIEVEMENTS SECTION-->
 
         <!--SKILLS SECTION-->
         <h2>Skills</h2>
         <div class="form-group row">
             <label for="skills" class="col-sm-2 col-form-label">Insert skill: </label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{skills}" id="skills" placeholder="skill">
+                <input type="text" class="form-control" th:field="*{skills[0].nameOfSkill}" id="skills" placeholder="skill">
             </div>
         </div>
         <div class="form-group row">
             <label for="proficiency" class="col-sm-2 col-form-label">Insert proficiency: </label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{proficiency}" id="proficiency" placeholder="proficiency">
+                <input type="text" class="form-control" th:field="*{skills[0].proficiency}" id="proficiency" placeholder="proficiency">
             </div>
         </div>
-        <div class="form-group row">
-            <label for="skills2" class="col-sm-2 col-form-label">Insert skill: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{skills}" id="skills2" placeholder="skill">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="proficiency2" class="col-sm-2 col-form-label">Insert proficiency: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{proficiency}" id="proficiency2" placeholder="proficiency">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="skills3" class="col-sm-2 col-form-label">Insert skill: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{skills}" id="skills3" placeholder="skill">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="proficiency3" class="col-sm-2 col-form-label">Insert proficiency: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{proficiency}" id="proficiency3" placeholder="proficiency">
-            </div>
-        </div>
+        <!--/END OF SKILLS SECTION-->
 <!--
         <div class="form-group row">
             <label for="personResume" class="col-sm-2 col-form-label">Insert person: </label>

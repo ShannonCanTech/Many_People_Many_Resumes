@@ -26,7 +26,7 @@
         <div th:each="eachPerson:${allpeople}">
             <p th:text="${eachPerson.firstName}"></p>
             <p th:text="${eachPerson.lastName}"></p>
-            <a href="/createresume" class="btn btn-primary">Add Resume</a>
+            <a href="/createresumeform" class="btn btn-primary">Add Resume</a>
             <a href="/editPerson" class="btn btn-warning">Edit Person</a>
 
             <!--List of resumes under each person-->
