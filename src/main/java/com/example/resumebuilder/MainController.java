@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -93,18 +90,25 @@ public class MainController {
 
     @RequestMapping("/createresumeform")
     public String  createResume(Model model){
-        model.addAttribute("theResume", new Resume());
-        model.addAttribute("thisExperience", new Experience());
-        model.addAttribute("thisEducation", new Education());
-        model.addAttribute("thisReference", new Reference());
-        model.addAttribute("thisSkill", new Skill());
+        AddExperience experienceForm = new AddExperience();
+
+        for(int i = 1; i <- 3; i++){
+            experienceForm.addExperience(new Experience());
+        }
+
+        model.addAttribute("resume", experienceForm); //set the object the same for each new instance
+        model.addAttribute("resume", new Resume());
+        model.addAttribute("experience", new Experience());
+        model.addAttribute("education", new Education());
+        model.addAttribute("reference", new Reference());
+        model.addAttribute("skill", new Skill());
         model.addAttribute("allpeople", personRepo.findAll()); //added since you are adding/syncing to person. Possibly include a dropdown menu for all of the persons
         return "createresumeform";
     }
 
     @RequestMapping("/addresumeform")
     public String  addResumeForm(Model model){
-        model.addAttribute("theResume", new Resume());//don't know the purpose of
+        model.addAttribute("resume", new Resume());//don't know the purpose of
         return "addresume";
     }
 
@@ -118,19 +122,26 @@ public class MainController {
     //Show Resume
     @RequestMapping("/resume/{id}")
     public String individualResume(@PathVariable("id") long id, Model model){
-        model.addAttribute("theResume", resumeRepo.findById(id).get());
-        return "thisresume";
+        model.addAttribute("resume", resumeRepo.findById(id).get());
+        return "resume";
+    }
+//    Added in hopes of displaying experience: http://www.baeldung.com/thymeleaf-list
+    @GetMapping("/resume/{id}")
+    public String showAll(Model model){
+        model.addAttribute("experiences", experienceRepo.findAll());
+        return "resume";
     }
 
-    @RequestMapping("/thisresume")
+    @RequestMapping("/resume")
     public String thisResume(Model model){
 //        model.addAttribute("allresumes", resumeRepo.findAll()); //removed to test if I should use findAll for Person(s) instead
         model.addAttribute("allpeople", personRepo.findAll());
-        return "thisresume";
+        model.addAttribute("experiences", experienceRepo.findAll());
+        return "resume";
     }
 
     @PostMapping("/saveresume")
-    public String saveResume(@ModelAttribute("theResume") Resume resume, BindingResult result){
+    public String saveResume(@ModelAttribute("resume") Resume resume, BindingResult result){
         resumeRepo.save(resume);
         return "redirect:listpeople";
     }

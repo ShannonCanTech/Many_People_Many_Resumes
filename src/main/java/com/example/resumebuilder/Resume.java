@@ -64,6 +64,7 @@ public class Resume {
         educations = new ArrayList<>();
         skills = new ArrayList<>();
         references = new ArrayList<>();
+        personResume = new HashSet<>();
     }
 
     public Resume(@NotEmpty String resumeName) {

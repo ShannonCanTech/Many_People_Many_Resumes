@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action="/saveresume" th:object="${theResume}" method="post">
+<form action="/saveresume" th:object="${resume}" method="post">
     <input type="text" th:field="*{resumeName}">
     <input type="text" th:field="*{personResume}">
     <button type="submit">Save</button>

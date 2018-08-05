@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<!--<head th:insert="fragments/resumefragment :: resumehead">-->
+
+<head>
+</head>
+<body>
+
+    <div th:each="experience: ${experiences}">
+        <p th:text="${experience.jobTitle}">Job Title: </p>
+        <p th:text="${experience.organization}">Organization: </p>
+    </div>
+
+<!--<div th:each="experience, i :*{experiences}">
+    <p>Job Title: </p><p th:text="*{experiences[__i.index__].jobTitle}"></p>
+    <p th:text="*{experiences[__i.index__].organization}"></p>
+    <p th:text="*{experiences[__i.index__].startDate}"></p>
+    <p th:text="*{experiences[__i.index__].startDate}"></p>
+</div>-->
+<!--<div th:each="education, i :${resume.educations}"}>
+     <p th:text="*{educations[__${i.index}__].degree}"></p>
+     <p th:text="*{educations[__${i.index}__].institution}"></p>
+</div>-->
+
+</body>
+</html>
